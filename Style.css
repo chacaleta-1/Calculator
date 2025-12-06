@@ -1,0 +1,118 @@
+/* 1. Font Setup */
+@font-face {
+    font-family: 'Digital-7';
+    src: url('digital-7/digital-7.ttf') format('truetype');
+}
+
+body {
+    font-family: 'Segoe UI', sans-serif; /* Cleaner modern font for body */
+    margin: 0;
+    padding: 0;
+    background-color: #2c2c2c; /* Dark surroundings */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+header {
+    position: absolute;
+    top: 20px;
+    width: 100%;
+    color: rgba(255, 255, 255, 0.5); /* Subtle header */
+    text-align: center;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+/* 2. Main Calculator Case */
+.calculator {
+    width: 350px;
+    background-color: #000000;
+    padding: 25px;
+    border-radius: 30px; /* Smooth curve like a smartphone */
+    box-shadow: 
+        0px 20px 50px rgba(0,0,0,0.5), /* Deep shadow */
+        inset 0px 0px 0px 2px #333; /* Subtle bezel rim */
+}
+
+/* 3. The Screen - "Inset" look */
+#display {
+    background-color: #c4d0a9; /* Authentic greenish LCD color */
+    color: #1f241d;
+    font-family: 'Digital-7', monospace;
+    font-size: 3.5rem;
+    text-align: right;
+    padding: 15px 20px;
+    border-radius: 10px;
+    margin-bottom: 20px;
+    
+    /* This creates the "sunken" screen effect */
+    box-shadow: 
+        inset 3px 3px 8px rgba(0,0,0,0.2), 
+        inset -3px -3px 8px rgba(255,255,255,0.1);
+    border: none;
+    letter-spacing: 3px;
+}
+
+/* 4. The Grid Layout Fix */
+.table {
+    width: 100%;
+    /* CRITICAL FIX: This forces all columns to be equal width, 
+       preventing the "clear" button from stretching the numbers */
+    table-layout: fixed; 
+    border-spacing: 12px; /* Nicer gap between buttons */
+}
+
+/* 5. Button Styling */
+button {
+    width: 100%;
+    height: 70px; /* Taller, easier to hit targets */
+    font-size: 1.8rem;
+    border: none;
+    border-radius: 20px; /* "Squircle" shape (between square and circle) */
+    cursor: pointer;
+    font-family: inherit;
+    transition: all 0.1s;
+    
+    /* Default Number Buttons styling (Dark Grey) */
+    background-color: #333333;
+    color: #ffffff;
+    box-shadow: 0px 4px 0px #1a1a1a; /* Subtle 3D edge */
+}
+
+button:active {
+    transform: translateY(4px); /* Pushes down */
+    box-shadow: none; /* Shadow disappears to look pressed */
+}
+
+/* 6. Specific Button Colors */
+
+/* Operator Buttons (Right column + Equals) - Orange */
+#devide, #multiple, #minus, #plus, #equal {
+    background-color: #ff9f0a;
+    color: white;
+    box-shadow: 0px 4px 0px #b36f07;
+}
+#devide:active, #multiple:active, #minus:active, #plus:active, #equal:active {
+    background-color: #e68f09;
+}
+
+/* Function Buttons (Clear) - Light Grey */
+#clear {
+    background-color: #a5a5a5;
+    color: black;
+    box-shadow: 0px 4px 0px #757575;
+    font-weight: bold;
+    font-size: 1.4rem; /* Slightly smaller font to fit the text */
+}
+#clear:active {
+    background-color: #8e8e8e;
+}
+
+/* Special fix for the tall Plus button if needed, 
+   though flex/grid usually handles this better. 
+   This ensures it fills the rowspan height correctly. */
+td[rowspan="2"] button {
+    height: 154px; /* (70px * 2) + 12px gap + 2px extra for alignment */
+}
