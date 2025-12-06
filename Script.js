@@ -151,6 +151,7 @@ equal.addEventListener("click", function(){
             firstnum = "";
             secondnum = "";
             operator = "";
+            step = 1;
             break;
         case "-":
             screen = Number(firstnum) - Number(secondnum);
@@ -158,6 +159,7 @@ equal.addEventListener("click", function(){
             firstnum = "";
             secondnum = "";
             operator = "";
+            step = 1;
             break;
         case "x":
             screen = Number(firstnum) * Number(secondnum);
@@ -165,6 +167,7 @@ equal.addEventListener("click", function(){
             firstnum = "";
             secondnum = "";
             operator = "";
+            step = 1;
             break;
         case "/":
             screen = Number(firstnum) / Number(secondnum);
@@ -172,6 +175,7 @@ equal.addEventListener("click", function(){
             firstnum = "";
             secondnum = "";
             operator = "";
+            step = 1;
             break;
         default:
             break;
@@ -196,5 +200,6 @@ clear.addEventListener("click", function(){
     firstnum = "";
     secondnum = "";
     operator = "";
+    step = 1;
     display.innerText = "";
 })
