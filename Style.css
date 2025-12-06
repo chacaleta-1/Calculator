@@ -116,3 +116,31 @@ button:active {
 td[rowspan="2"] button {
     height: 154px; /* (70px * 2) + 12px gap + 2px extra for alignment */
 }
+/* --- Add this to the bottom of Style.css --- */
+
+/* The explosion animation definition */
+@keyframes explodeEffect {
+    0% { transform: translate(1px, 1px) rotate(0deg); }
+    10% { transform: translate(-1px, -2px) rotate(-1deg); background-color: #500000; }
+    20% { transform: translate(-3px, 0px) rotate(1deg); }
+    30% { transform: translate(3px, 2px) rotate(0deg); }
+    40% { transform: translate(1px, -1px) rotate(1deg); }
+    50% { transform: translate(-1px, 2px) rotate(-1deg); }
+    60% { transform: translate(-3px, 1px) rotate(0deg); background-color: #aa0000; }
+    70% { transform: translate(3px, 1px) rotate(-1deg); }
+    80% { transform: translate(-1px, -1px) rotate(1deg); }
+    90% { transform: translate(1px, 2px) rotate(0deg); opacity: 1;}
+    100% { transform: scale(1.1) rotate(20deg); opacity: 0; pointer-events: none; }
+}
+
+/* The class we will add via JavaScript */
+.exploded {
+    animation: explodeEffect 0.8s forwards; /* 'forwards' makes it stay invisible at the end */
+    pointer-events: none; /* This prevents clicking any buttons */
+}
+
+/* Optional: Turn the screen red immediately */
+.exploded #display {
+    background-color: red !important;
+    color: white !important;
+}

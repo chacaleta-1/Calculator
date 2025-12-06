@@ -170,12 +170,18 @@ equal.addEventListener("click", function(){
             step = 1;
             break;
         case "/":
-            screen = Number(firstnum) / Number(secondnum);
-            display.innerText = screen;
-            firstnum = "";
-            secondnum = "";
-            operator = "";
-            step = 1;
+            // --- NEW CODE START ---
+            // Check if dividing by 0
+            if (secondnum === "0") {
+                display.innerText = "BOOM!";
+                
+                // Find the main calculator container and add the CSS class
+                // We use querySelector because your calculator is inside a <section class="calculator">
+                document.querySelector(".calculator").classList.add("exploded");
+                
+                // Stop the function here so the math doesn't happen
+                return; 
+            }
             break;
         default:
             break;
