@@ -181,6 +181,13 @@ equal.addEventListener("click", function(){
                 
                 // Stop the function here so the math doesn't happen
                 return; 
+            } else {
+                screen = Number(firstnum) / Number(secondnum);
+                display.innerText = screen;
+                firstnum = "";
+                secondnum = "";
+                operator = "";
+                step = 1;
             }
             break;
         default:
