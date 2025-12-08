@@ -1,17 +1,6 @@
 let display = document.getElementById("display");
-let zero = document.getElementById("zero");
-let kamat = document.getElementById("kamat");
 let equal = document.getElementById("equal");
-let three = document.getElementById("three");
-let two = document.getElementById("two");
-let one = document.getElementById("one");
-let six = document.getElementById("six");
-let five = document.getElementById("five");
-let four = document.getElementById("four");
 let plus = document.getElementById("plus");
-let nine = document.getElementById("nine");
-let eight = document.getElementById("eight");
-let seven = document.getElementById("seven");
 let minus = document.getElementById("minus");
 let multiple = document.getElementById("multiple");
 let devide = document.getElementById("devide");
@@ -21,106 +10,26 @@ let firstnum = "";
 let operator = "";
 let secondnum = "";
 let step = 1;
+let numberButtons = document.querySelectorAll(".numbers");
 
-zero.addEventListener("click", function(){
-    if (step == 1) {
-        firstnum = firstnum + "0";
-        display.innerText = firstnum;
-    } else {
-        secondnum = secondnum + "0"
-        display.innerText = secondnum;
+
+//function add number 
+    function addNumber(digit) {
+        if (step == 1) {
+            firstnum = firstnum + digit;
+            display.innerText = firstnum;
+        } else {
+            secondnum = secondnum + digit;
+            display.innerText = secondnum;
+        }
     }
-})
-one.addEventListener("click", function(){
-    if (step == 1) {
-        firstnum = firstnum + "1";
-        display.innerText = firstnum;
-    } else {
-        secondnum = secondnum + "1"
-        display.innerText = secondnum;
-    }
-})
-two.addEventListener("click", function(){
-    if (step == 1) {
-        firstnum = firstnum + "2";
-        display.innerText = firstnum;
-    } else {
-        secondnum = secondnum + "2"
-        display.innerText = secondnum;
-    }
-})
-three.addEventListener("click", function(){
-    if (step == 1) {
-        firstnum = firstnum + "3";
-        display.innerText = firstnum;
-    } else {
-        secondnum = secondnum + "3"
-        display.innerText = secondnum;
-    }
-})
-four.addEventListener("click", function(){
-    if (step == 1) {
-        firstnum = firstnum + "4";
-        display.innerText = firstnum;
-    } else {
-        secondnum = secondnum + "4"
-        display.innerText = secondnum;
-    }
-})
-five.addEventListener("click", function(){
-    if (step == 1) {
-        firstnum = firstnum + "5";
-        display.innerText = firstnum;
-    } else {
-        secondnum = secondnum + "5"
-        display.innerText = secondnum;
-    }
-})
-six.addEventListener("click", function(){
-    if (step == 1) {
-        firstnum = firstnum + "6";
-        display.innerText = firstnum;
-    } else {
-        secondnum = secondnum + "6"
-        display.innerText = secondnum;
-    }
-})
-seven.addEventListener("click", function(){
-    if (step == 1) {
-        firstnum = firstnum + "7";
-        display.innerText = firstnum;
-    } else {
-        secondnum = secondnum + "7"
-        display.innerText = secondnum;
-    }
-})
-eight.addEventListener("click", function(){
-    if (step == 1) {
-        firstnum = firstnum + "8";
-        display.innerText = firstnum;
-    } else {
-        secondnum = secondnum + "8"
-        display.innerText = secondnum;
-    }
-})
-nine.addEventListener("click", function(){
-    if (step == 1) {
-        firstnum = firstnum + "9";
-        display.innerText = firstnum;
-    } else {
-        secondnum = secondnum + "9"
-        display.innerText = secondnum;
-    }
-})
-kamat.addEventListener("click", function(){
-    if (step == 1) {
-        firstnum = firstnum + ".";
-        display.innerText = firstnum;
-    } else {
-        secondnum = secondnum + "."
-        display.innerText = secondnum;
-    }
-})
+
+//loop that search every single number
+numberButtons.forEach(function(btn) {
+    btn.addEventListener("click", function() {
+        addNumber(btn.innerText);
+    });
+});
 
 plus.addEventListener("click", function(){
     step = 2;
@@ -170,16 +79,14 @@ equal.addEventListener("click", function(){
             step = 1;
             break;
         case "/":
-            // --- NEW CODE START ---
-            // Check if dividing by 0
+           
             if (secondnum === "0") {
                 display.innerText = "BOOM!";
                 
-                // Find the main calculator container and add the CSS class
-                // We use querySelector because your calculator is inside a <section class="calculator">
+                
                 document.querySelector(".calculator").classList.add("exploded");
                 
-                // Stop the function here so the math doesn't happen
+                
                 return; 
             } else {
                 screen = Number(firstnum) / Number(secondnum);
@@ -195,24 +102,10 @@ equal.addEventListener("click", function(){
     }
 })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 clear.addEventListener("click", function(){
     firstnum = "";
     secondnum = "";
     operator = "";
     step = 1;
-    display.innerText = "";
+    display.innerText = "result";
 })
