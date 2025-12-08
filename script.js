@@ -14,11 +14,17 @@ let numberButtons = document.querySelectorAll(".numbers");
 
 
 //function add number 
-    function addNumber(digit) {
+     function addNumber(digit) {
         if (step == 1) {
+            if (digit === "." && firstnum.includes(".")){
+                return;
+            }
             firstnum = firstnum + digit;
             display.innerText = firstnum;
         } else {
+            if (digit === "." && secondnum.includes(".")) {
+                return;
+            }
             secondnum = secondnum + digit;
             display.innerText = secondnum;
         }
