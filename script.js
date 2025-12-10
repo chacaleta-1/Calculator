@@ -5,28 +5,31 @@ let minus = document.getElementById("minus");
 let multiple = document.getElementById("multiple");
 let devide = document.getElementById("devide");
 let clear = document.getElementById("clear");
-let screen = 0;
-let firstnum = "";
-let operator = "";
-let secondnum = "";
-let step = 1;
+
+//creating the object "calculator"
+let calculator ={
+    screen: 0,
+    firstnum: "",
+    secondnum: "",
+    operator: "",
+    step: 1
+};
 let numberButtons = document.querySelectorAll(".numbers");
 
-
 //function add number 
-     function addNumber(digit) {
-        if (step == 1) {
-            if (digit === "." && firstnum.includes(".")){
+    function addNumber(digit) {
+        if (calculator.step == 1) {
+            if (digit === "." && calculator.firstnum.includes(".")){
                 return;
             }
-            firstnum = firstnum + digit;
-            display.innerText = firstnum;
+            calculator.firstnum = calculator.firstnum + digit;
+            display.innerText = calculator.firstnum;
         } else {
-            if (digit === "." && secondnum.includes(".")) {
+            if (digit === "." && calculator.secondnum.includes(".")) {
                 return;
             }
-            secondnum = secondnum + digit;
-            display.innerText = secondnum;
+            calculator.secondnum = calculator.secondnum + digit;
+            display.innerText = calculator.secondnum;
         }
     }
 
@@ -38,69 +41,67 @@ numberButtons.forEach(function(btn) {
 });
 
 plus.addEventListener("click", function(){
-    step = 2;
-    operator = "+";
-    display.innerText = operator;
+    calculator.step = 2;
+    calculator.operator = "+";
+    display.innerText = calculator.operator;
 })
 minus.addEventListener("click", function(){
-    step = 2;
-    operator = "-";
-    display.innerText = operator;
+    calculator.step = 2;
+    calculator.operator = "-";
+    display.innerText = calculator.operator;
 })
 devide.addEventListener("click", function(){
-    step = 2;
-    operator = "/";
-    display.innerText = operator;
+    calculator.step = 2;
+    calculator.operator = "/";
+    display.innerText = calculator.operator;
 })
 multiple.addEventListener("click", function(){
-    step = 2;
-    operator = "x";
-    display.innerText = operator;
+    calculator.step = 2;
+    calculator.operator = "x";
+    display.innerText = calculator.operator;
 })
 
 equal.addEventListener("click", function(){
-    switch (operator) {
+    switch (calculator.operator) {
         case "+":
-            screen = Number(firstnum) + Number(secondnum);
-            display.innerText = screen;
-            firstnum = "";
-            secondnum = "";
-            operator = "";
-            step = 1;
+            calculator.screen = Number(calculator.firstnum) + Number(calculator.secondnum);
+            display.innerText = calculator.screen;
+            calculator.firstnum = "";
+            calculator.secondnum = "";
+            calculator.operator = "";
+            calculator.step = 1;
             break;
         case "-":
-            screen = Number(firstnum) - Number(secondnum);
-            display.innerText = screen;
-            firstnum = "";
-            secondnum = "";
-            operator = "";
-            step = 1;
+            screen = Number(calculator.firstnum) - Number(calculator.secondnum);
+            display.innerText = calculator.screen;
+            calculator.firstnum = "";
+            calculator.secondnum = "";
+            calculator.operator = "";
+            calculator.step = 1;
             break;
         case "x":
-            screen = Number(firstnum) * Number(secondnum);
-            display.innerText = screen;
-            firstnum = "";
-            secondnum = "";
-            operator = "";
-            step = 1;
+            calculator.screen = Number(calculator.firstnum) * Number(calculator.secondnum);
+            display.innerText = calculator.screen;
+            calculator.firstnum = "";
+            calculator.secondnum = "";
+            calculator.operator = "";
+            calculator.step = 1;
             break;
         case "/":
            
-            if (secondnum === "0") {
+            if (calculator.secondnum === "0") {
                 display.innerText = "BOOM!";
-                
                 
                 document.querySelector(".calculator").classList.add("exploded");
                 
-                
                 return; 
             } else {
-                screen = Number(firstnum) / Number(secondnum);
-                display.innerText = screen;
-                firstnum = "";
-                secondnum = "";
-                operator = "";
-                step = 1;
+                calculator.screen = Number(calculator.firstnum) / Number(calculator.secondnum);
+                display.innerText = calculator.screen;
+                calculator.firstnum = "";
+                calculator.secondnum = "";
+                calculator.operator = "";
+                calculator.step = 1;
             }
             break;
         default:
@@ -109,9 +110,9 @@ equal.addEventListener("click", function(){
 })
 
 clear.addEventListener("click", function(){
-    firstnum = "";
-    secondnum = "";
-    operator = "";
-    step = 1;
+    calculator.firstnum = "";
+    calculator.secondnum = "";
+    calculator.operator = "";
+    calculator.step = 1;
     display.innerText = "result";
 })
